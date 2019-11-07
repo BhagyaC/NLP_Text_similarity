@@ -71,3 +71,15 @@ Parameters for training the model can be passed to the model in the constructor.
 By default, the predictions made by XGBoost are probabilities. Because this is a binary classification problem, each prediction is the probability of the input pattern belonging to the first class. We can easily convert them to binary class values by rounding them to 0 or 1.
 
 
+- learning_rate: step size shrinkage used to prevent overfitting. Range is [0,1]
+- max_depth: determines how deeply each tree is allowed to grow during any boosting round.
+- subsample: percentage of samples used per tree. Low value can lead to underfitting.
+- colsample_bytree: percentage of features used per tree. High value can lead to overfitting.
+- n_estimators: number of trees you want to build.
+- objective: determines the loss function to be used like reg:linear for regression problems, reg:logistic for classification problems with only decision, binary:logistic for classification problems with probability.
+XGBoost also supports regularization parameters to penalize models as they become more complex and reduce them to simple (parsimonious) models.
+
+- gamma: controls whether a given node will split based on the expected reduction in loss after the split. A higher value leads to fewer splits. Supported only for tree-based learners.
+- alpha: L1 regularization on leaf weights. A large value leads to more regularization.
+- lambda: L2 regularization on leaf weights and is smoother than L1 regularization.
+It's also worth mentioning that though you are using trees as your base learners, you can also use XGBoost's relatively less popular linear base learners and one other tree learner known as dart. All you have to do is set the booster parameter to either gbtree (default),gblinear or dart.
