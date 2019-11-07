@@ -59,5 +59,15 @@ It is an implementation of gradient boosted decision trees designed for speed an
 - It introduces something called distributed for large and complex module
 - It uses out- of- core computing inorder to anlyse the huge and varied dataset
 - It used cache optimization
+- XGBoost provides a wrapper class to allow models to be treated like classifiers or regressors in the scikit-learn framework.
 
-- 
+This means we can use the full scikit-learn library with XGBoost models.
+
+The XGBoost model for classification is called XGBClassifier. We can create and and fit it to our training dataset. Models are fit using the scikit-learn API and the model.fit() function.
+
+Parameters for training the model can be passed to the model in the constructor. Here, we use the sensible defaults.
+- To make predictions we use the scikit-learn function model.predict().
+
+By default, the predictions made by XGBoost are probabilities. Because this is a binary classification problem, each prediction is the probability of the input pattern belonging to the first class. We can easily convert them to binary class values by rounding them to 0 or 1.
+
+
